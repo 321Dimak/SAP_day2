@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Employee CRUD demo application">
+    <meta name="author" content="Employee service">
+    <title>Employee service</title>
+</head>
+
+<body>
+
+<h3>Employee CRUD demo application</h3>
+
+<!-- Add Employee Form -->
+<form th:action="@{/employee/add}" method="post">
+    <label for="name">Add New Employee: Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="employeeId">Employee ID:</label>
+    <input type="text" id="employeeId" name="employeeId" required>
+
+    <label for="role">Role:</label>
+    <input type="text" id="role" name="role" required>
+
+    <button type="submit">Add Employee</button>
+</form>
+
+<hr>
+
+<!-- Edit Employee Form -->
+<form th:action="@{/employee/edit}" method="post">
+    <label for="editEmployeeId">Edit Employee By ID:</label>
+    <input type="text" id="editEmployeeId" name="editEmployeeId" required>
+
+    <input type="text" id="editName" name="name" placeholder="New Name">
+    <input type="text" id="editRole" name="role" placeholder="New Role">
+
+    <button type="submit">Edit Employee</button>
+</form>
+
+<hr>
+
+<!-- Delete Employee Form -->
+<form th:action="@{/employee/delete}" method="post">
+    <label for="deleteEmployeeId">Delete Employee By ID:</label>
+    <input type="text" id="deleteEmployeeId" name="deleteEmployeeId" required>
+    <button type="submit">Delete Employee</button>
+</form>
+
+
+<hr>
+
+<form th:action="@{/employee/find}" method="get">
+    <label for="findEmployeeId">Find Employee By ID:</label>
+    <input type="text" id="findEmployeeId" name="findEmployeeId" required>
+
+    <button type="submit">Find Employee</button>
+</form>
+
+<hr>
+
+<!-- List of Employees -->
+<h3>List of Employees:</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Date of Joining</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.employeeId}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.role}"></td>
+        <td th:text="${employee.dateOfJoining}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>
