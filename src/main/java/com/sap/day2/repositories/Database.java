@@ -1,8 +1,6 @@
 package com.sap.day2.repositories;
 
 import com.sap.day2.entity.Employee;
-import lombok.Getter;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -26,7 +24,6 @@ public class Database {
     }
 
     public void addEmployee(Employee employee) {
-        employee.setDateOfJoining();
         employees.add(employee);
     }
 
